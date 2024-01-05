@@ -182,9 +182,6 @@ def new_transaction():
             tx_data['image_path'] = None
         # Add the image path to the transaction data
         # tx_data['image_path'] = image_path
-        print("kontol")
-        print(image_path)
-        print("kontol")
         tx_data["timestamp"] = time.time()
         blockchain.add_new_transaction(tx_data)
         return "Success", 201
