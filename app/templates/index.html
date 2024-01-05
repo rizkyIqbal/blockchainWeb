@@ -3,15 +3,15 @@
 
 {% block content %}
 	<br>
-	<a href="{{node_address}}/mine"><button>Request to mine</button></a>
-	<a href="/"><button>Resync</button></a>
+	<!-- <a href="{{node_address}}/mine"><button>Request to mine</button></a>
+	<a href="/"><button>Resync</button></a> -->
 
 	<div style="margin: 20px;">
 	<div class="">
 		
 	</div>
 	<p class="text-2xl font-medium my-8">Latest News</p>
-	<div class="flex gap-6">
+	<div class="grid grid-cols-3 gap-6">
 
   {% for post in posts %}
   <!-- <div class="post_box">
@@ -31,14 +31,16 @@
 	
 
 	<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-		<a href="#">
-			<img class="rounded-t-lg" src="{{ url_for('static', filename='log.png') }}" alt="" />
-		</a>
-		<div class="p-5">
+		<div class="w-full h-72 overflow-hidden">
+			<a href="#">
+				<img class="w-full h-full object-cover object-center rounded-t-lg" src="{{ url_for('static', filename=post.thumbnail) }}" alt="" />
+			</a>
+		</div>
+		<div class="p-5 bg-white">
 			<a href="#">
 				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{post.title}}</h5>
 			</a>
-			<p class="mb-3 font-normal text-gray-700 ">{{post.content}}</p>
+			<p class="mb-3 font-normal text-gray-700 line-clamp-2">{{post.content}}</p>
 			<p class="font-normal text-gray-400">By {{post.author}}</p>
 			<p class="mb-3 text-gray-400">Posted at <i>{{readable_time(post.timestamp)}}</i></p>
 			<a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -49,6 +51,7 @@
 			</a>
 		</div>
 	</div>
+	
 
 	{% endfor %}
 </div>
@@ -114,6 +117,13 @@
 		    margin-right: 2px;
 		    outline: none;
 		    height: 42px;
+		}
+		.line-clamp-2 {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;  
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 	</style>
     </div>
