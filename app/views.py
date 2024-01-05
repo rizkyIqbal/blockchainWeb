@@ -85,7 +85,8 @@ def submit_textarea():
         unique_filename = str(uuid.uuid4()) + "_" + filename
         current_dir = os.path.dirname(os.path.abspath(__file__))
         image_path = os.path.join(current_dir, 'static', unique_filename)
-        thumbnail = image_path  
+        file.save(image_path)
+        thumbnail = unique_filename  
     else:
         thumbnail = None
     post_object = {
